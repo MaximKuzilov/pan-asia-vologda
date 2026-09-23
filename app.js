@@ -27,3 +27,18 @@ function renderCart(){let root=document.querySelector('#cartList');if(!root)retu
 function observe(){let io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on')}),{threshold:.08});document.querySelectorAll('.reveal').forEach(e=>io.observe(e))}
 document.addEventListener('DOMContentLoaded',()=>{updateDock();renderMenu();renderCart();observe();document.querySelector('.burger')?.addEventListener('click',()=>document.querySelector('.navlinks')?.classList.toggle('open'));document.querySelectorAll('.filter').forEach(b=>b.onclick=()=>{document.querySelectorAll('.filter').forEach(x=>x.classList.remove('active'));b.classList.add('active');renderMenu(b.dataset.filter)});document.querySelector('#orderForm')?.addEventListener('submit',e=>{e.preventDefault();if(!cart.length){alert('Сначала добавьте блюда в корзину.');return}document.querySelector('.success')?.classList.add('show');e.target.querySelector('button[type=submit]').disabled=true});});
 
+document.addEventListener('DOMContentLoaded',()=>{
+  const fullAddress='г. Вологда, ул. Мира, д. 22';
+  document.querySelectorAll('footer p, .plain-facts dd').forEach(el=>{
+    if(/(?:Вологда,\s*)?ул\. Мира,\s*22/.test(el.textContent)) el.textContent=fullAddress;
+  });
+  const footer=document.querySelector('footer');
+  const footerWrap=footer?.querySelector('.wrap');
+  if(!footerWrap||footerWrap.querySelector('.footer-map')) return;
+  const map=document.createElement('section');
+  map.className='footer-map';
+  map.setAttribute('aria-label','Карта проезда');
+  map.innerHTML=`<div class="footer-map-head"><div><span class="kicker">Как нас найти</span><h2>${fullAddress}</h2></div><a class="text-link" href="https://yandex.ru/maps/org/pan_aziya/86267383179/" target="_blank" rel="noopener">Открыть в Яндекс Картах →</a></div><div class="footer-map-frame"><iframe src="https://yandex.ru/map-widget/v1/?ll=39.885855%2C59.219801&z=16&oid=86267383179" title="Пан-Азия на Яндекс Картах" loading="lazy" allowfullscreen></iframe></div>`;
+  footerWrap.prepend(map);
+});
+
