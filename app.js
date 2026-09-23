@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded',()=>{
   const map=document.createElement('section');
   map.className='footer-map';
   map.setAttribute('aria-label','Карта проезда');
-  map.innerHTML=`<div class="footer-map-head"><div><span class="kicker">Как нас найти</span><h2>${fullAddress}</h2></div><a class="text-link" href="https://yandex.ru/maps/org/pan_aziya/86267383179/" target="_blank" rel="noopener">Открыть в Яндекс Картах →</a></div><div class="footer-map-frame"><iframe src="https://yandex.ru/map-widget/v1/?ll=39.885855%2C59.219801&z=16&oid=86267383179" title="Пан-Азия на Яндекс Картах" loading="lazy" allowfullscreen></iframe></div>`;
+  map.innerHTML=`<div class="footer-map-head"><div><span class="kicker">Как нас найти</span><h2>${fullAddress}</h2></div><a class="text-link" href="https://yandex.ru/maps/org/pan_aziya/86267383179/" target="_blank" rel="noopener">Открыть в Яндекс Картах →</a></div><div class="footer-map-frame"><iframe src="https://yandex.ru/map-widget/v1/?ll=39.885855%2C59.219801&mode=search&oid=86267383179&ol=biz&z=17" title="Пан-Азия на Яндекс Картах" loading="lazy" allowfullscreen></iframe></div>`;
   footerWrap.prepend(map);
 });
 
